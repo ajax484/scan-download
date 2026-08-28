@@ -8,14 +8,10 @@ export default function App() {
   const pdfFileName = 'BONA BROCHURE SCAN CODE.pdf';
   const pdfFileSize = '92 MB';
 
+  const downloadLink = 'https://drive.google.com/file/d/1zstbsGXNcwJbPY0Q03j18bmNybdXPPfT/view?usp=sharing';
+
   const triggerDownload = () => {
-    // Create an anchor tag programmatically and trigger the download
-    const link = document.createElement('a');
-    link.href = `/${encodeURIComponent(pdfFileName)}`;
-    link.download = pdfFileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open(downloadLink, '_blank');
   };
 
   return (
@@ -54,11 +50,13 @@ export default function App() {
         {activeTab === 'scan' ? (
           <QrScanner 
             pdfFileName={pdfFileName} 
+            downloadLink={downloadLink}
             onScanSuccess={triggerDownload} 
           />
         ) : (
           <QrGenerator 
             pdfFileName={pdfFileName} 
+            downloadLink={downloadLink}
           />
         )}
       </main>

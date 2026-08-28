@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Copy, Check, Download, ExternalLink } from 'lucide-react';
 
-export default function QrGenerator({ pdfFileName }) {
+export default function QrGenerator({ pdfFileName, downloadLink }) {
   const [downloadUrl, setDownloadUrl] = useState('');
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Generate the URL dynamically based on the current origin and the PDF file name
-    const encodedFileName = encodeURIComponent(pdfFileName);
-    const url = `${window.location.origin}/${encodedFileName}`;
-    setDownloadUrl(url);
-  }, [pdfFileName]);
+    // Use the external download link directly
+    setDownloadUrl(downloadLink);
+  }, [downloadLink]);
 
   const copyToClipboard = async () => {
     try {

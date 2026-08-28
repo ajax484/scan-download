@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Html5Qrcode } from 'html5-qrcode';
 import { Camera, CameraOff, AlertCircle, CheckCircle, RefreshCw } from 'lucide-react';
 
-export default function QrScanner({ pdfFileName, onScanSuccess }) {
+export default function QrScanner({ pdfFileName, downloadLink, onScanSuccess }) {
   const [cameras, setCameras] = useState([]);
   const [selectedCameraId, setSelectedCameraId] = useState('');
   const [isScanning, setIsScanning] = useState(false);
@@ -94,9 +94,8 @@ export default function QrScanner({ pdfFileName, onScanSuccess }) {
   const handleDecodedText = (text) => {
     console.log('Scanned QR text:', text);
 
-    // Check if the scanned QR code contains the PDF file name or is a valid download URL
-    const decodedFileName = decodeURIComponent(pdfFileName);
-    const isValid = text.includes(pdfFileName) || text.includes(encodeURIComponent(pdfFileName)) || text.includes('BONA');
+    // Check if the scanned QR code contains the PDF file name, the downloadLink, or is a valid download URL
+    const isValid = text.includes(pdfFileName) || text.includes(encodeURIComponent(pdfFileName)) || text.includes('BONA') || (downloadLink && text.includes(downloadLink));
 
     if (isValid) {
       // Stop scanning on success
