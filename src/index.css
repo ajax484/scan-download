@@ -257,6 +257,27 @@ body::after {
   box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.2);
 }
 
+/* Force video to fill the wrapper */
+#scanner-video-preview {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#scanner-video-preview > * {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#scanner-video-preview video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  border-radius: 14px;
+}
+
 /* Scanner Frame Overlay */
 .scanner-overlay {
   position: absolute;
@@ -535,7 +556,17 @@ body::after {
     padding: 1.5rem 1.25rem;
     border-radius: 20px;
   }
+
+  .scanner-viewport-wrapper {
+    aspect-ratio: 3 / 4; /* Better portrait aspect ratio for mobile */
+    min-height: 350px;
+  }
   
+  #scanner-video-preview > * {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
   .brochure-card {
     flex-direction: column;
     text-align: center;
