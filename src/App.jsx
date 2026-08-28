@@ -4,7 +4,7 @@ import QrScanner from './components/QrScanner.jsx';
 import QrGenerator from './components/QrGenerator.jsx';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('scan'); // 'scan' | 'qr'
+  const [activeTab, setActiveTab] = useState('qr'); // 'scan' | 'qr'
   const pdfFileName = 'BONA BROCHURE SCAN CODE.pdf';
   const pdfFileSize = '92 MB';
 
